@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import validation from '../validation'
 import { DropdownSearch } from 'components/elements'
 import { Input } from 'components/form'
 import { localize } from 'components/localization'
@@ -39,9 +40,15 @@ type countryType = {
     display_name: string
     value: string
 }
+
 const AccountDetails = () => {
     const [residence_list, setResidenceList] = useState([])
     const [value, setValue] = useState('')
+    const [email, setEmail] = React.useState('')
+    const [submit_error_msg, setSubmitErrorMsg] = React.useState('')
+    const [submit_status, setSubmitStatus] = React.useState<boolean | string>('')
+    const [fieldname, setFieldName] = React.useState('')
+    const [email_error_msg, setEmailErrorMsg] = React.useState('')
     const { send } = useDerivWS()
 
     useEffect(() => {
@@ -60,6 +67,33 @@ const AccountDetails = () => {
         })
     }, [send])
 
+    const clearEmail = () => {
+        setEmail('')
+        setEmailErrorMsg('')
+    }
+
+    const handleInputChange = (e) => {
+        const { value } = e.target
+        setFieldName(value)
+        handleValidation(value, 'name')
+    }
+
+    const handleValidation = (type, param) => {
+        const message = typeof param === 'object' ? param.target.value : param
+        if (type === 'country') {
+            setEmailErrorMsg(validateCountry(message))
+        }
+    }
+
+    const validateCountry = (country_str) => {
+        const error_message = validation.country(country_str) || submit_error_msg
+        if (submit_error_msg) {
+            setSubmitErrorMsg('')
+            setSubmitStatus('')
+        }
+
+        return error_message
+    }
     const form_inputs = [
         {
             id: 'dm-country-select',
@@ -133,8 +167,15 @@ const AccountDetails = () => {
                                 type={item.type}
                                 label_focus_color="black"
                                 background="white"
+                                error={email_error_msg}
+                                value={email}
+                                onBlur={handleValidation}
+                                handleError={clearEmail}
+                                onChange={handleInputChange}
                                 label={localize(item.label)}
                                 placeholder={item.placeholder}
+                                autoComplete="off"
+                                required
                             />
                         )
                     }
