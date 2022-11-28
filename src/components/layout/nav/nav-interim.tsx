@@ -11,7 +11,7 @@ import {
 import NavTemplate from './components/nav-template'
 import { localize, LanguageSwitcher } from 'components/localization'
 import { LinkButton } from 'components/form'
-import { Container, Flex } from 'components/containers'
+import { Container, Flex, Branding } from 'components/containers'
 import device from 'themes/device'
 import Logo from 'images/svg/layout/logo-deriv.svg'
 import LogoOnly from 'images/svg/layout/logo-deriv-only.svg'
@@ -46,48 +46,71 @@ const RightSection = styled(Flex)`
     }
 `
 
-const NavInterim = ({ interim_type, landing_type }: NavInterimProps) => (
-    <NavTemplate>
-        <Container jc="space-between" p="2.4rem 0">
-            <Flex ai="center" jc="flex-start">
-                <DesktopWrapper>
-                    <LogoWrapper
-                        to={interim_type ? `/interim/${interim_type}/` : `/landing/`}
-                        aria-label="Home"
-                    >
-                        <Flex ai="center">
-                            <img src={Logo} alt="deriv logo" width="190" height="27" />
-                            <img src={GetTrading} alt="get trading" width="120" height="17" />
-                        </Flex>
-                    </LogoWrapper>
-                </DesktopWrapper>
+const NavInterim = ({ interim_type, landing_type }: NavInterimProps) => {
+    return (
+        <NavTemplate>
+            <Container jc="space-between" p="2.4rem 0">
+                <Flex ai="center" jc="flex-start">
+                    <DesktopWrapper>
+                        <Branding>
+                            <LogoWrapper
+                                to={interim_type ? `/interim/${interim_type}/` : `/landing/`}
+                                aria-label="Home"
+                            >
+                                <Flex ai="center">
+                                    <img src={Logo} alt="deriv logo" width="190" height="27" />
+                                    <img
+                                        src={GetTrading}
+                                        alt="get trading"
+                                        width="120"
+                                        height="17"
+                                    />
+                                </Flex>
+                            </LogoWrapper>
+                        </Branding>
+                    </DesktopWrapper>
 
-                <MobileWrapper>
-                    <LogoLinkMobile
-                        to={interim_type ? `/interim/${interim_type}/` : `/landing/`}
-                        aria-label="Home"
-                    >
-                        <Flex ai="center">
-                            <img src={LogoOnly} alt="deriv logo" width="115" height="19.4" />
-                            <LogoDescription ai="center">
-                                <Line />
-                                <img src={GetTrading} alt="get trading" width="120" height="17" />
-                            </LogoDescription>
-                        </Flex>
-                    </LogoLinkMobile>
-                </MobileWrapper>
-            </Flex>
+                    <MobileWrapper>
+                        <LogoLinkMobile
+                            to={interim_type ? `/interim/${interim_type}/` : `/landing/`}
+                            aria-label="Home"
+                        >
+                            <Branding>
+                                <Flex ai="center">
+                                    <img
+                                        src={LogoOnly}
+                                        alt="deriv logo"
+                                        width="115"
+                                        height="19.4"
+                                    />
+                                    <LogoDescription ai="center">
+                                        <Line />
+                                        <img
+                                            src={GetTrading}
+                                            alt="get trading"
+                                            width="120"
+                                            height="17"
+                                        />
+                                    </LogoDescription>
+                                </Flex>
+                            </Branding>
+                        </LogoLinkMobile>
+                    </MobileWrapper>
+                </Flex>
 
-            <RightSection jc="flex-end" ai="center">
-                {!landing_type && <LanguageSwitcher has_short_name />}
-                {!landing_type && (
-                    <StyledLinkButton secondary to="/">
-                        {localize('Explore Deriv.com')}
-                    </StyledLinkButton>
-                )}
-            </RightSection>
-        </Container>
-    </NavTemplate>
-)
+                <RightSection jc="flex-end" ai="center">
+                    {!landing_type && (
+                        <>
+                            <LanguageSwitcher has_short_name />
+                            <StyledLinkButton secondary to="/">
+                                {localize('Explore Deriv.com')}
+                            </StyledLinkButton>
+                        </>
+                    )}
+                </RightSection>
+            </Container>
+        </NavTemplate>
+    )
+}
 
 export default NavInterim

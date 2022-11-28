@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Wrapper, MobileWrapper, HamburgerMenu, CloseIcon } from '../../styles/nav-styles'
 import { localize, LanguageSwitcher, LocalizedLink } from 'components/localization'
 import { LinkButton } from 'components/form'
-import { Flex } from 'components/containers'
+import { Flex, Branding } from 'components/containers'
 import { OffCanvasMenuPartner, useMoveOffCanvasMenu } from 'components/elements'
 import device from 'themes/device'
 import { affiliate_signin_url } from 'common/constants'
@@ -54,10 +54,11 @@ const NavPartnerMobile = ({ hide_login_signup }: NavPartnerMobileProps) => {
                         onClick={openOffCanvasMenu}
                     />
                 )}
-
-                <LogoLink to="/partners/" aria-label="Home">
-                    <Logo src={LogoOnly} alt="deriv logo" />
-                </LogoLink>
+                <Branding>
+                    <LogoLink to="/partners/" aria-label="Home">
+                        <Logo src={LogoOnly} alt="deriv logo" />
+                    </LogoLink>
+                </Branding>
 
                 <Flex ml="auto" ai="center" width="auto">
                     <LanguageSwitcher has_short_name is_high_nav />

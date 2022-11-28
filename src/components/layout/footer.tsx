@@ -4,8 +4,8 @@ import { DefaultFooter, FooterGrid } from './footer/common/style'
 import LogoSection from './footer/logo'
 import MainLinksSection from './footer/main-links'
 import DisclaimerSection from './footer/disclaimer'
-import { Container } from 'components/containers'
-import { DerivStore } from 'store'
+import { Container, Branding } from 'components/containers'
+import { useCountryRule } from 'components/hooks/use-country-rule'
 // TODO: (discussion) make footer pure component, and move usage of footer to custom
 
 type FooterProps = {
@@ -24,17 +24,19 @@ const Footer = ({
     no_footer_links = false,
 }: FooterProps) => {
     const { show_cookie_banner } = React.useContext(LocationContext)
-    const { is_eu_country } = React.useContext(DerivStore)
+    const { is_eu } = useCountryRule()
 
     return (
-        <DefaultFooter has_banner_cookie={show_cookie_banner} is_eu_country={is_eu_country}>
+        <DefaultFooter has_banner_cookie={show_cookie_banner} is_eu={is_eu}>
             <Container>
                 <FooterGrid>
                     <LogoSection type={type} />
                     {!no_footer_links && (
                         <MainLinksSection is_ppc={is_ppc} is_ppc_redirect={is_ppc_redirect} />
                     )}
-                    <DisclaimerSection is_academy={academy} />
+                    <Branding>
+                        <DisclaimerSection is_academy={academy} />
+                    </Branding>
                 </FooterGrid>
             </Container>
         </DefaultFooter>

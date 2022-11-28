@@ -5,7 +5,7 @@ import NavTemplate from './components/nav-template'
 import { LocalizedLink } from 'components/localization'
 import GetTrading from 'images/svg/layout/get-trading.svg'
 import { QueryImage } from 'components/elements'
-import { Container, Flex } from 'components/containers'
+import { Container, Flex, Branding } from 'components/containers'
 import device from 'themes/device'
 
 const ContentContainer = styled(Container)`
@@ -59,19 +59,21 @@ const NavJumpIndice = () => {
     return (
         <NavTemplate nav_height_mobile="48px">
             <ContentContainer>
-                <LogoWrapper>
-                    <LogoLink to="/" aria-label="Home">
-                        <QueryImage
-                            data={data['deriv']}
-                            alt="deriv logo"
-                            max_width="16.4rem"
-                            width="100%"
-                            height="auto"
-                        />
-                    </LogoLink>
-                    <Line />
-                    <ImgWrapper src={GetTrading} alt="get trading" />
-                </LogoWrapper>
+                <Branding>
+                    <LogoWrapper>
+                        <LogoLink to="/" aria-label="Home">
+                            <QueryImage
+                                data={data['deriv']}
+                                alt="deriv logo"
+                                max_width="16.4rem"
+                                width="100%"
+                                height="auto"
+                            />
+                        </LogoLink>
+                        <Line />
+                        <ImgWrapper src={GetTrading} alt="get trading" />
+                    </LogoWrapper>
+                </Branding>
             </ContentContainer>
         </NavTemplate>
     )

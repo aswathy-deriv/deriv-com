@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import NavTemplate from './components/nav-template'
 import { LogoLink, StyledLink, HamburgerMenu, CloseIcon } from './styles/nav-styles'
-import { Flex, Desktop, Mobile } from 'components/containers'
+import { Flex, Desktop, Mobile, Branding } from 'components/containers'
 import { QueryImage, OffCanvasMenuWrapperCareer, useMoveOffCanvasMenu } from 'components/elements'
 import Hamburger from 'images/svg/layout/hamburger_menu.svg'
 import Close from 'images/svg/layout/close-long.svg'
@@ -25,7 +25,7 @@ const MainWrapper = styled(Flex)`
     margin-left: 16px;
 
     @media ${device.tabletL} {
-        height: 48px;
+        height: 7.2rem;
         width: 95%;
     }
 `
@@ -145,17 +145,19 @@ const NavCareers = ({ is_besquare }: NavCareersProps) => {
                             />
                         )}
                     </Mobile>
+                    <Branding>
+                        <LogoSection>
+                            <StyledLogoLink to="/" aria-label="Home">
+                                <QueryImage
+                                    data={data['deriv']}
+                                    alt="Deriv"
+                                    height="auto"
+                                    loading="eager"
+                                />
+                            </StyledLogoLink>
+                        </LogoSection>
+                    </Branding>
 
-                    <LogoSection>
-                        <StyledLogoLink to="/" aria-label="Home">
-                            <QueryImage
-                                data={data['deriv']}
-                                alt="Deriv"
-                                height="auto"
-                                loading="eager"
-                            />
-                        </StyledLogoLink>
-                    </LogoSection>
                     <Desktop>
                         <HeaderSection>
                             {links.map(({ to, active, aria_label, title }) => (
