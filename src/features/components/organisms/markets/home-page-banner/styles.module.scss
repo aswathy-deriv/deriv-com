@@ -5,7 +5,7 @@
 .flex_container {
     justify-content: center;
     @include breakpoints(tablet) {
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
     }
 }
