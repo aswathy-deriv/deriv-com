@@ -17,8 +17,7 @@ const HomePageWrapper = ({ item }: HomepageBannerProps) => {
             md={{ direction: 'row', justify: 'end', align: 'start' }}
         >
             <BannerText item={item} />
-            {/*change it*/}
-            <Flex.Box md={{ ml: '40x' }}>{item.image}</Flex.Box>
+            {item.image}
         </Flex.Box>
     )
 }

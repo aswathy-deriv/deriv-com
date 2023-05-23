@@ -7,14 +7,14 @@ import OtherMarkets from './other-markets'
 
 const ETFMarket = () => {
     return (
-        <div>
+        <>
             <HomePage />
 
             <InstrumentsTableEtf />
             <WhyETFTrade />
             <ETFSteps />
             <OtherMarkets />
-        </div>
+        </>
     )
 }
 
