@@ -6,7 +6,7 @@
     justify-content: center;
     @include breakpoints(tablet) {
         justify-content: flex-end;
-        align-items: center;
+        align-items: start;
     }
 }
 .item_box {
