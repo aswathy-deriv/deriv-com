@@ -12,5 +12,6 @@
 .item_box {
     @include breakpoints(tablet) {
         inline-size: 44rem;
+        margin-left: 11.7rem;
     }
 }
