@@ -13,9 +13,8 @@ interface HomepageBannerProps {
 const MarketWrapper = ({ item }: HomepageBannerProps) => {
     const { is_mobile_or_tablet } = useBreakpoints()
     return (
-        <Container.Fixed className={flex_container}>
+        <Container.Fixed className={flex_container} pt={'40x'} pb={'8x'} md={{ pb: '40x' }}>
             <Flex.Box
-                container="fluid"
                 direction="col-reverse"
                 justify="center"
                 className={item_flex}

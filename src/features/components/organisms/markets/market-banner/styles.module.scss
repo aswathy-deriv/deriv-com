@@ -1,35 +1,53 @@
 @use 'features/styles/theme/theme-mixins' as *;
 
 .item_box {
-    @include breakpoints(laptop) {
+    @include breakpoints(tablet) {
         max-inline-size: 53rem;
-        height: 53rem;
     }
 }
-
 .text_description {
     text-align: center;
     @include breakpoints(tablet) {
-        min-inline-size: 45.4rem;
+        max-inline-size: 45.4rem;
         text-align: left;
-    }
-}
-
-@include breakpoints(tablet) {
-    .flex_container {
-        position: relative;
-        isolation: isolate;
     }
 }
 .image_phone {
     margin-block-start: 7rem;
 }
+.flex_container {
+    margin-inline: auto;
+    inline-size: 100%;
+    @include breakpoints(tablet) {
+        inline-size: 90%;
+    }
+    @include breakpoints(laptop) {
+        isolation: isolate;
+        inline-size: 84%;
+    }
+    @include breakpoints(desktop) {
+        inline-size: 80%;
+        max-inline-size: 123.2rem;
+    }
+}
 .image_container {
+    @include breakpoints(tablet) {
+        max-inline-size: 56rem;
+    }
     @include breakpoints(tablet) {
         position: absolute;
         right: 0;
-        z-index: -1;
-        padding-top: 6rem;
-        margin-block-start: 0;
+        max-inline-size: 48rem;
     }
+    @include breakpoints(laptop) {
+        position: absolute;
+        z-index: -1;
+        max-inline-size: 66rem;
+    }
+    @include breakpoints(desktop) {
+        position: absolute;
+        z-index: -1;
+        max-inline-size: 82rem;
+    }
+
 }
