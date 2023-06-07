@@ -19,7 +19,7 @@ const TradeTypes = () => {
                 <Localize translate_text="_t_ETF trades available on Deriv_t_" />
             </Typography.Heading>
             <Container.Fluid>
-                <Flex.Box direction="row">
+                <Flex.Box direction="row" margin_inline="5x" lg={{ margin_inline: '15x' }}>
                     {trade_types.map((data) => (
                         <TradesAvailableWrapper key={data.trade_name} item={data} />
                     ))}
