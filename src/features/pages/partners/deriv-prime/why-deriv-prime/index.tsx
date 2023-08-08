@@ -1,7 +1,7 @@
 import React from 'react'
 import * as styles from './why-deriv-prime.module.scss'
 import { card_data } from './data'
-import { WithIntl , Localize } from 'components/localization'
+import { WithIntl, Localize } from 'components/localization'
 import Typography from 'features/components/atoms/typography'
 import FlexBox from 'features/components/atoms/flex-box'
 
@@ -20,7 +20,7 @@ const WhyDerivPrime = () => {
                 className={styles.container}
                 md={{ justify: 'center', margin_block: '40x' }}
             >
-                <Typography.Heading align={'center'} className={styles.header}>
+                <Typography.Heading align={'center'} as="h2" className={styles.header}>
                     <Localize translate_text={'_t_Why choose Deriv Prime?_t_'} />
                 </Typography.Heading>
                 <FlexBox.Box
