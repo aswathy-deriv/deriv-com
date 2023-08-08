@@ -1,9 +1,9 @@
 import React from 'react'
+import WhyDerivPrime from './why-deriv-prime'
 import Layout from 'features/components/templates/layout'
 import { SEO } from 'components/containers'
 import PaymentAgentAffiliateNav from 'features/components/templates/navigation/payment-agent-nav'
 import Footer from 'features/components/templates/footer'
-import WhyDerivPrime from 'pages/partners/deriv-prime/why-deriv-prime'
 
 const DerivPrime = () => {
     return (
