@@ -1,9 +1,5 @@
+import { CardTypes } from './types'
 import { TString } from 'types/generics'
-
-type CardTypes = {
-    title?: TString
-    subtitle?: TString
-}
 
 export const card_data: CardTypes[] = [
     {

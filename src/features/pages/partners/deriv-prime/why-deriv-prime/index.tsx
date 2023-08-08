@@ -1,9 +1,9 @@
 import React from 'react'
 import * as styles from './why-deriv-prime.module.scss'
 import { card_data } from './data'
+import { WithIntl , Localize } from 'components/localization'
 import Typography from 'features/components/atoms/typography'
 import FlexBox from 'features/components/atoms/flex-box'
-import { Localize } from 'components/localization'
 
 const WhyDerivPrime = () => {
     return (
@@ -63,4 +63,4 @@ const WhyDerivPrime = () => {
     )
 }
 
-export default WhyDerivPrime
+export default WithIntl()(WhyDerivPrime)
